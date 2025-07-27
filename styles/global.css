@@ -1,0 +1,331 @@
+/* styles/global.css */
+
+body {
+  background: #ffffff;
+  color: #000000;
+  margin: 0;
+  padding: 0;
+  font-family: system-ui, sans-serif;
+}
+
+.container {
+  max-width: 700px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #000000;
+  margin-top: 2rem;
+}
+
+ul, ol {
+  color: #000000;
+}
+
+a {
+  color: blue;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+blockquote {
+  color: #000000;
+  border-left: 4px solid #ccc;
+  padding-left: 1em;
+  margin-left: 0;
+}
+
+code {
+  background: #f4f4f4;
+  color: #000000;
+  padding: 2px 4px;
+  border-radius: 4px;
+  font-family: monospace;
+}
+
+pre {
+  background: #f4f4f4;
+  color: #000000;
+  padding: 1rem;
+  overflow: auto;
+  border-radius: 6px;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  color: #000000;
+}
+
+/* ───── Base Box Styles ───── */
+.tip-box,
+.note-box,
+.warning-box,
+.alert-box {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 16px 20px;
+  border-radius: 12px;
+  margin: 24px 0;
+  font-size: 14px;
+  line-height: 1.6;
+  border: 1px solid;
+  color: #000000;
+}
+
+/* ───── Icons ───── */
+.tip-box::before {
+  content: "ⓘ";
+  font-size: 16px;
+  line-height: 1.3;
+  flex-shrink: 0;
+  align-self: flex-start;
+  padding-top: 2px;
+}
+
+/* ───── Tip (green) ───── */
+.tip-box {
+  background-color: #f0fdf4;
+  border-color: #7ad49b;
+  color: #237243;
+}
+
+/* ───── Note (blue) ───── */
+.note-box {
+  background-color: #f5fbff;
+  border-color: #7dafff;
+  color: #3068ff;
+}
+.note-box::before {
+  content: "ⓘ";
+  font-size: 16px;
+  line-height: 1.3;
+  flex-shrink: 0;
+  align-self: flex-start;
+  padding-top: 2px;
+}
+
+/* ───── Warning (yellow) ───── */
+.warning-box {
+  background-color: #fefce8;
+  border-color: #eab308;
+  color: #9f5930;
+}
+.warning-box::before {
+  content: "ⓘ";
+  font-size: 16px;
+  line-height: 1.3;
+  flex-shrink: 0;
+  align-self: flex-start;
+  padding-top: 2px;
+}
+
+/* ───── Alert (red) ───── */
+.alert-box {
+  background-color: #fef2f2;
+  border-color: #cfa4a4;
+  color: #ad4242;
+}
+.alert-box::before {
+  content: "ⓘ";
+  font-size: 16px;
+  line-height: 1.3;
+  flex-shrink: 0;
+  align-self: flex-start;
+  padding-top: 2px;
+}
+
+/* ───── Table Wrapper ───── */
+.table-scroll {
+  overflow-x: auto;
+  width: 100%;
+}
+
+/* ───── Markdown Table Styles ───── */
+.markdown-body table {
+  min-width: 600px; /* ensures scrolling when needed */
+  width: 100%;
+  border-collapse: collapse;
+  margin: 24px 0;
+  font-size: 14px;
+  border: 1px solid #e5e7eb;
+  white-space: nowrap;
+}
+
+.markdown-body thead {
+  background-color: #f9fafb;
+}
+
+.markdown-body th,
+.markdown-body td {
+  padding: 12px 16px;
+  text-align: left;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.markdown-body th {
+  font-weight: 600;
+  color: #111827;
+}
+
+.markdown-body tr:last-child td {
+  border-bottom: none;
+}
+
+/* ───── Markdown Typography ───── */
+.markdown-body {
+  font-size: 16px;
+  font-weight: 350;
+  line-height: 1.75;
+  color: #111827;
+}
+
+.markdown-body p {
+  margin-bottom: 1.5rem;
+  color: #111827;
+}
+
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3 {
+  font-weight: 650;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  line-height: 1.3;
+}
+
+.markdown-body ul,
+.markdown-body ol {
+  margin-bottom: 1.5rem;
+  padding-left: 1.5rem;
+}
+
+.markdown-body li {
+  margin-bottom: 0.5rem;
+}
+
+/* ───── Article Header Layout ───── */
+.article-header {
+  margin-bottom: 2.5rem;
+}
+
+.article-header h1 {
+  font-size: 2.25rem;
+  font-weight: 650;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+  color: #1a1a1a;
+}
+
+.article-header .description {
+  font-size: 1.15rem;
+  font-weight: 350;
+  color: #646464;
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+/* ───── Author Info ───── */
+.author-info {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 2rem;
+}
+
+.author-info img {
+  width: 50px;
+  height: 50px;
+  border-radius: 9999px;
+  object-fit: cover;
+}
+
+.author-meta {
+  display: flex;
+  flex-direction: column;
+}
+
+.author-meta .author-name {
+  font-weight: 400;
+  color: #111111;
+  margin-bottom: 2px;
+  font-size: 0.9rem;
+}
+
+.author-meta .date {
+  color: #6b6b6b;
+  font-size: 0.9rem;
+  font-weight: 350;
+}
+
+.section {
+  margin-bottom: 60px;
+}
+
+.section-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.article-list {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0;
+}
+
+.article-list li {
+  margin-bottom: 0.75rem;
+}
+
+.article-list a {
+  font-size: 1rem;
+  color: #1a1a1a;
+  text-decoration: none;
+}
+
+.article-list a:hover {
+  text-decoration: underline;
+}
+
+/* Category Grid */
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.category-card {
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 1.2rem 1rem;
+  transition: border 0.2s ease, background-color 0.2s ease;
+  background-color: #f9f9f9;
+}
+
+.category-card:hover {
+  border-color: #a0aec0;
+  background-color: #f3f4f6;
+}
+
+.category-card h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.category-card p {
+  color: #4b5563;
+  font-size: 0.95rem;
+  line-height: 1.4;
+}

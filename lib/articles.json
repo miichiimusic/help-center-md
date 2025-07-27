@@ -1,0 +1,38 @@
+[
+  {
+    "title": "I have a feature request",
+    "slug": "feature-request",
+    "category": "General",
+    "featured": true
+  },
+  {
+    "title": "Block Previews",
+    "slug": "block-previews",
+    "category": "General",
+    "featured": true
+  },
+  {
+    "title": "Join a team",
+    "slug": "team-join",
+    "category": "Team Management",
+    "featured": true
+  },
+  {
+    "title": "Members management",
+    "slug": "members-management",
+    "category": "Team Management",
+    "featured": true
+  },
+  {
+    "title": "Edit mode",
+    "slug": "edit-mode",
+    "category": "Public Content",
+    "featured": true
+  },
+  {
+    "title": "How to transfer a repository",
+    "slug": "transfer-repository",
+    "category": "Team Management",
+    "featured": true
+  }
+]

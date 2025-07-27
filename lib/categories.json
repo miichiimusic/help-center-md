@@ -1,0 +1,27 @@
+[
+  {
+    "name": "Getting Started",
+    "slug": "getting-started",
+    "description": "General concepts, basic terminology and tips."
+  },
+  {
+    "name": "Public Content",
+    "slug": "public-content",
+    "description": "Forking, privacy settings, templates and more."
+  },
+  {
+    "name": "Team Management",
+    "slug": "team-management",
+    "description": "Learn to create and manage current or future teams to enhance collaboration and productivity."
+  },
+  {
+    "name": "Repository Dashboard",
+    "slug": "repository-dashboard",
+    "description": "Editing content, managing the schema, committing content and everything related to BaseHub\u2019s main dashboard."
+  },
+  {
+    "name": "Common Errors",
+    "slug": "common-errors",
+    "description": "While working in the BaseHub dashboard, you may encounter various errors that serve as guardrails to..."
+  }
+]

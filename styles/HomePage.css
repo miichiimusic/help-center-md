@@ -1,0 +1,338 @@
+/* styles/HomePage.css */
+
+.homepage-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  font-family: system-ui, sans-serif;
+  color: #1a1a1a;
+  overflow-x: hidden;
+}
+
+.homepage-container > h1 {
+  font-size: 2.1rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+/* Search Bar */
+/* Ensure search box is centered */
+.search-box {
+  position: relative;    /* ← add this */
+  width: 100%;
+  max-width: 480px;      /* same as input width */
+  margin-left: auto !important;
+  margin-right: auto !important;
+  display: block !important;
+}
+.search-box input {
+  display: block;        /* so margin auto works on the input */
+  margin: 0 auto;        /* center within its relative parent */
+  width: 100%;           
+  max-width: 480px;      /* same as the container */
+  padding: 10px 40px 10px 36px;
+  font-size: 1rem;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  outline: none;
+  box-sizing: border-box; /* include padding in width */
+}
+.search-box svg {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #9ca3af;
+}
+.search-box .key-hint {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.75rem;
+  color: #6b7280;
+  background: #f3f4f6;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+/* Contact Text */
+.contact-text {
+  text-align: center;
+  font-size: 0.875rem;
+  color: #6b7280;
+  margin-bottom: 2rem;
+}
+
+/* Section Titles */
+.section-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 2rem 0 1rem;
+}
+
+/* Popular Articles */
+.popular-articles {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+.popular-article {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 20px;
+  border: 1px solid #e5e7eb;
+  font-size: 0.9rem;
+  border-radius: 8px;
+  color: #1a1a1a;
+  background-color: #fff;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+  cursor: pointer;
+}
+.popular-article:hover {
+  background-color: #f9fafb;
+  border-color: #cbd5e1;
+  text-decoration: none;
+}
+.popular-article .arrow {
+  font-size: 2rem;
+  color: #1a1a1a;
+}
+
+/* At small screens, switch to a flex‐based, scrollable list */
+@media (max-width: 768px) {
+  .popular-articles {
+    display: flex;
+    flex-wrap: nowrap;            /* don’t wrap onto new lines */
+    overflow-x: auto;             /* enable only this container to scroll */
+    overscroll-behavior-x: contain; /* keep scroll within this element */
+    padding-bottom: 15px;          /* room for scroll bar */
+  }
+  /* Hide scrollbar by default */
+.popular-articles {
+  scrollbar-width: none;       /* Firefox */
+  -ms-overflow-style: none;    /* IE 10+ */
+}
+.popular-articles::-webkit-scrollbar {
+  height: 0;                   /* WebKit */
+  background: transparent;
+}
+
+/* Show scrollbar on hover or active (desktop) */
+.popular-articles:hover::-webkit-scrollbar,
+.popular-articles:active::-webkit-scrollbar {
+  height: 5px;
+  background-color: rgb(240, 240, 240);
+}
+.popular-articles:hover::-webkit-scrollbar-thumb,
+.popular-articles:active::-webkit-scrollbar-thumb {
+  background-color: rgba(156, 163, 175, 0.6);
+  border-radius: 3px;
+}
+
+  .popular-article {
+    flex: 0 0 auto;               /* don’t grow or shrink */
+    min-width: 250px;             /* ensure a readable width */
+    margin-right: 1rem;           /* gap between items */
+  }
+}
+.popular-article {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 20px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  background-color: #fff;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+  cursor: pointer;
+}
+.popular-article:hover {
+  background-color: #f9fafb;
+  border-color: #cbd5e1;
+}
+.popular-article .arrow {
+  font-size: 1rem;
+  font-weight: 200;
+  color: #1a1a1a;
+}
+
+/* Browse Categories */
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 columns by default */
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+/* Breakpoints for responsive layout */
+@media (max-width: 1024px) {
+  .category-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 columns on medium screens */
+  }
+}
+
+@media (max-width: 768px) {
+  .category-grid {
+    grid-template-columns: 1fr; /* 1 column on small screens */
+  }
+}
+
+.category-card {
+  display: block;
+  padding: 16px;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  background-color: #ffffff;
+  transition: background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+  text-align: left;
+}
+.category-card:hover {
+  background-color: #f9f9f9;
+  border-color: #cbd5e1;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  text-decoration: none;
+}
+
+.icon-wrapper {
+  display: block;
+  margin-bottom: 8px;
+}
+.icon-wrapper svg {
+  color: #4b5563;
+  width: 1.5em !important;
+  height: 1.5em !important;
+  display: block;
+}
+
+.category-title {
+  margin: 0 0 4px 0;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+/* in HomePage.css, after your existing rule */
+.category-card .category-description {
+  margin-top: 5px;
+  font-weight: 350;
+  font-size: 1rem;      /* your new size */
+  color: #6a6a6a;       /* your new color */
+  line-height: 1.6;     /* your new spacing */
+}
+
+/* When search yields no matches */
+.search-box + .contact-text + .section-title + .popular-articles:empty::before {
+  content: "No articles found.";
+  display: block;
+  padding: 16px;
+  color: #6b7280;
+  font-style: italic;
+}
+
+/* ───── Search Modal Styling ───── */
+/* Dark overlay behind modal */
+.search-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: flex-start;      /* align modal at top */
+  justify-content: center;
+  padding-top: 5vh;            /* space from top */
+  z-index: 1000;
+}
+
+.search-modal {
+  background: #ffffff;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 500px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  padding: 16px;
+  max-height: 80vh;            /* limit height so it doesn't jump */
+  overflow: hidden;
+}
+
+.search-modal-input {
+  width: 100%;
+  padding: 12px 16px;
+  font-size: 1rem;
+  border: 2px solid #7e75ff;
+  border-radius: 8px;
+  outline: none;
+  margin-bottom: 12px;
+  box-sizing: border-box;
+}
+
+.search-results {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  max-height: calc(80vh - 80px);
+  overflow-y: auto;            /* scroll inside modal */
+}
+
+.search-results li {
+  padding: 10px 12px;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.search-results li:first-child {
+  background-color: #f3f4f6;
+}
+
+.search-results a {
+  text-decoration: none;
+  color: #111827;
+  font-weight: 500;
+  display: block;
+}
+
+.search-results mark {
+  background: none;
+  color: #f97316;
+  font-weight: 600;
+}
+
+.no-results {
+  padding: 10px 12px;
+  color: #6b7280;
+  font-style: italic;
+}
+
+/* Make sure the modal is relative for absolute children */
+.search-modal {
+  position: relative;
+}
+
+/* Push the input down so the close button sits above it */
+.search-input-wrapper {
+  margin-top: 28px; /* adjust as needed to clear the button */
+}
+
+/* Close button above the input */
+.modal-close {
+  position: absolute;
+  top: 8px;        /* distance from top of modal */
+  right: 12px;     /* align with input’s right padding */
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  line-height: 0;
+  z-index: 1;
+}
+
+.modal-close svg {
+  color: #6b7280;
+}
+
+.modal-close:hover svg {
+  color: #f97316;
+}

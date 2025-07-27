@@ -1,0 +1,92 @@
+body {
+  font-family: system-ui, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #fdfdfc;
+  color: #1a1a1a;
+}
+
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+h1 {
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-weight: 700;
+}
+
+.search-box {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.search-box input[type="text"] {
+  width: 100%;
+  max-width: 400px;
+  padding: 10px 16px;
+  font-size: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+.search-hint {
+  text-align: center;
+  color: #666;
+  font-size: 0.95rem;
+  margin-bottom: 2rem;
+}
+
+section {
+  margin-bottom: 2.5rem;
+}
+
+h2 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.popular-articles,
+.categories-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
+}
+
+.popular-articles a,
+.category-card {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  padding: 16px 20px;
+  border-radius: 12px;
+  text-decoration: none;
+  color: #1a1a1a;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.95rem;
+  transition: background 0.2s ease;
+}
+
+.popular-articles a:hover,
+.category-card:hover {
+  background: #f9f9f8;
+}
+
+.category-card h3 {
+  margin: 0 0 6px;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.category-card p {
+  margin: 0;
+  font-size: 0.875rem;
+  color: #555;
+  line-height: 1.4;
+}
