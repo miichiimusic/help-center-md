@@ -110,17 +110,21 @@ const HomePage: NextPage<HomePageProps> = ({ articles, categories }) => {
 
         <h2 className="section-title">Browse Categories</h2>
         <div className="category-grid">
-          {categories.map((cat) => (
-            <Link
-              href={`/${cat.slug}`}
-              key={cat.slug}
-              className="category-card"
-            >
-              <div className="icon-wrapper">{getCategoryIcon(cat.slug)}</div>
-              <strong className="category-title">{cat.name}</strong>
-              <p className="category-description">{cat.description}</p>
-            </Link>
-          ))}
+          {categories.map((cat) => {
+   // derive a title-cased display name from the slug
+   const displayName = cat.slug
+     .split('-')
+     .map(w => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase())
+     .join(' ')
+
+   return (
+     <Link href={`/${cat.slug}`} key={cat.slug} className="category-card">
+       <div className="icon-wrapper">{getCategoryIcon(cat.slug)}</div>
+       <strong className="category-title">{displayName}</strong>
+       <p className="category-description">{cat.description}</p>
+     </Link>
+   )
+ })}
         </div>
       </main>
 

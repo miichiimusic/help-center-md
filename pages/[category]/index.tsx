@@ -59,30 +59,36 @@ export const getStaticProps: GetStaticProps<CategoryPageProps> = async ({ params
     props: {
       categorySlug,
       categoryName: meta.name,
-      categoryDescription: meta.description,
+      categoryDescription: meta.description || '',
       articles,
     },
   }
 }
 
 const CategoryPage: NextPage<CategoryPageProps> = ({
-  categorySlug,
-  categoryName,
-  categoryDescription,
+   categorySlug,
+   // categoryName,  // no longer needed
+   categoryDescription,
   articles,
-}) => {
+ }) => {
+   // derive a display name: "team-management" → "Team management"
+   const displayName = categorySlug
+   .split('-')
+   .map((w) => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase())
+   .join(' ')
+
   return (
     <div className="container category-container">
       {/* Breadcrumbs: Home › Category */}
       <nav className="breadcrumbs">
         <Link href="/">Home</Link> ‹{' '}
-        <span>{categoryName}</span>
+        <span>{displayName}</span>
       </nav>
 
       <div className="category-grid-container">
         {/* Left column */}
         <div>
-          <h1>{categoryName}</h1>
+          <h1>{displayName}</h1>
           {categoryDescription && (
             <p className="category-description">{categoryDescription}</p>
           )}
