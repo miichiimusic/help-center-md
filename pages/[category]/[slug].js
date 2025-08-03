@@ -1,4 +1,4 @@
-// pages/[category]/[slug].tsx
+// pages/[category]/[slug].js
 import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
@@ -6,6 +6,7 @@ import { remark } from 'remark'
 import html from 'remark-html'
 import remarkGfm from 'remark-gfm'
 import Link from 'next/link'
+import { useEffect } from 'react';
 import { useRouter } from 'next/router'
 
 export async function getStaticPaths() {
@@ -46,6 +47,8 @@ export async function getStaticProps({ params }) {
     .replace(/<blockquote>\s*<p><strong>Warning:<\/strong>\s*(.*?)<\/p>\s*<\/blockquote>/gs, (_, text) => `<div class="warning-box">${text}</div>`)
     .replace(/<blockquote>\s*<p><strong>Alert:<\/strong>\s*(.*?)<\/p>\s*<\/blockquote>/gs, (_, text) => `<div class="alert-box">${text}</div>`)
     .replace(/<table>(.*?)<\/table>/gs,(_, tableBody) => `<div class="table-scroll"><table>${tableBody}</table></div>`)
+    .replace(/<pre><code>([\s\S]*?)<\/code><\/pre>/g,(_, code) =>`<div class="code-block-wrapper"><button class="copy-button">Copy</button><pre><code>${code}</code></pre></div>`)
+    .replace(/<a href="(http[^"]+)"([^>]*)>/g, '<a href="$1"$2 target="_blank" rel="noopener noreferrer">')
 
   return {
     props: {
@@ -63,6 +66,20 @@ export async function getStaticProps({ params }) {
 export default function ArticlePage({ title, description, date, author, content, category, slug }) {
   // Format category name
   const categoryName = category.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase())
+
+// Copy-to-clipboard script
+  useEffect(() => {
+    const buttons = document.querySelectorAll('.copy-button');
+    buttons.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const code = btn.nextElementSibling.querySelector('code').innerText;
+        navigator.clipboard.writeText(code).then(() => {
+          btn.innerText = 'Copied!';
+          setTimeout(() => (btn.innerText = 'Copy'), 1500);
+        });
+      });
+    });
+  }, []);
 
   return (
     <div className="container">

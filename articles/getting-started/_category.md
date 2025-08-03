@@ -1,3 +1,3 @@
 ---
-categoryDescription: "Learn to create and manage teams for better collaboration and permissions."
+categoryDescription: "Step-by-step tutorials and guides for mastering Label Tools’ features and workflow"
 ---

@@ -3,12 +3,7 @@ import React, { useState, useRef, useEffect } from 'react'
 import type { NextPage, GetStaticProps } from 'next'
 import Link from 'next/link'
 import { Search, Folder, Globe, Users, Info, X } from 'lucide-react'
-import {
-  getAllArticles,
-  getAllCategories,
-  Article,
-  Category,
-} from '@/lib/getArticles'
+import {getAllArticles, getAllCategories, Article, Category,} from '@/lib/getArticles'
 
 interface HomePageProps {
   articles: Article[]

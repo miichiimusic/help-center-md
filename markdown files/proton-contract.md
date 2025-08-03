@@ -1,36 +1,29 @@
 ---
-title: "Don’t Sign a Proton Contract Without Talking to Us"
+title: "Do Not Sign a Label or Distributor Contract Before Talking to Us"
 date: "2025-07-23"
-description: "Why independent artists should review Proton’s contract terms with us before signing to protect composition rights and ensure fair revenue distribution."
+description: "Why you should consult us before signing record label or distributor agreements to protect your composition rights and secure long-term royalty income."
 author: "Leonardo Ortegon"
-tags: ["Label Tools"]
 ---
 
-## Step 1: Why This Matters
+## Why this matters
 
 Proton SoundSystem is a platform for distributing music, but their standard contract includes language that assigns away your composition rights. This can severely affect our ability to register your works, collect royalties on your behalf, and help you maintain control over how your music is used in the future.
 
 If the Proton contract is signed as-is, WAYU Publishing will not be able to register the composition on your behalf, as the contract assigns those rights to Proton and the record label by default. The agreement is structured to give exclusive rights to both the master and the composition unless otherwise amended. While the label rightfully retains the master, the composition side (your songwriting and publishing rights) can easily be lost unless you take action beforehand.
 
----
-
-## Step 2: Do Not Sign Yet — Contact Us First
+## Contact us before signing
 
 If you’re about to release a track through a label that uses Proton, **pause before signing anything**. The moment a record label sends you the Proton agreement, please reach out to us.
 
-We’ll walk you through the necessary steps to protect your publishing rights without disrupting the release process. Our goal is to make sure you retain control of your compositions and continue collecting royalties from your PRO (ASCAP, BMI, etc.) and other platforms.
+We’ll walk you through the necessary steps to protect your publishing rights without disrupting the release process. Our goal is to make sure you retain control of your compositions and continue collecting royalties.
 
----
-
-## Step 3: Use the Official Amendment Provided by Proton
+## Use the official amendment provided by Proton
 
 Proton has acknowledged this concern and allows artists to submit a **contract amendment** that separates the master rights from the composition rights. We provide this amendment for you, and it’s fully valid under **Clause 11** of Proton’s default agreement, which permits modifications with written approval from both parties.
 
 📎 **[Download the Contract Amendment here](/downloads/proton-composition-rights-amendment.pdf)**
 
 Once downloaded, send it to the label manager using the email template below.
-
----
 
 ## Step 4: Send This Email to the Label
 
@@ -56,8 +49,6 @@ Let me know if you have any questions.
 Best regards,  
 [Your Name]
 ```
-
----
 
 ## Final Reminder
 
