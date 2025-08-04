@@ -190,6 +190,13 @@ th, td {
   line-height: 1.75;
   color: #111827;
 }
+
+@media (max-width: 768px) {
+  .markdown-body {
+    font-weight: 400;
+  }
+}
+
 .markdown-body p {
   margin-bottom: 1.5rem;
   color: #111827;
