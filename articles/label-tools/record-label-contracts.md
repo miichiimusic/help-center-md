@@ -13,8 +13,8 @@ At WAYU Publishing, we frequently see agreements that prevent us from registerin
 
 > **Tip:** **The Good News:** Amendments can still be added even after a contract has been signed, as long as both parties agree in writing. So even if you’ve already signed something, it's not too late — just get in touch and we’ll help guide you through the process.
 
-## Contact us before or after signing a contract
-Whether you're preparing to release music through a record label or distributor, or you've already signed an agreement, it's important to make sure your composition rights are protected.
+## Contact us before signing a contract
+Whether you're preparing to release music through a record label or distributor, or you've already signed an agreement in the past, it's important to make sure your composition rights are protected.
 
 If you're affiliated with WAYU Publishing, reach out to us before signing — or even after — and we’ll review the contract with you. We will provide an amendment to send to the record label or distributor, ensuring that you retain 100% of your composition rights.
 
