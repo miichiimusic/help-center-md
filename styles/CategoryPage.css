@@ -12,10 +12,12 @@
   font-size: 0.9rem;
   color: #6b7280;
   margin-bottom: 1rem;
+  line-height: 1.5;
 }
 .breadcrumbs > a,
 .breadcrumb-link {
   color: #6b7280;
+  font-weight: 400;       /* match font weight */
   text-decoration: none;
   margin: 0 4px;
 }
@@ -24,8 +26,10 @@
   text-decoration: underline;
 }
 .breadcrumbs span {
-  color: #374151;
+  color: #6b7280;         /* match other breadcrumbs */
+  font-weight: 400;       /* match font weight */
   margin-left: 4px;
+  text-decoration: none;  /* no underline by default */
 }
 
 /* Two-column layout */
