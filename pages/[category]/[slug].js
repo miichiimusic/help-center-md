@@ -2,18 +2,27 @@
 import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
-import { remark } from 'remark'
-import html from 'remark-html'
+import { unified } from 'unified'
+import remarkParse from 'remark-parse'
 import remarkGfm from 'remark-gfm'
+import remarkRehype from 'remark-rehype'
+import rehypeRaw from 'rehype-raw'
+import rehypeStringify from 'rehype-stringify'
 import Link from 'next/link'
 import { useEffect } from 'react';
 import { useRouter } from 'next/router'
 
 export async function getStaticPaths() {
-  const categories = fs.readdirSync(path.join('articles'))
+  const articlesDir = path.join(process.cwd(), 'articles')
+  const categories = fs.readdirSync(articlesDir).filter(item => {
+    const itemPath = path.join(articlesDir, item)
+    return fs.statSync(itemPath).isDirectory() && !item.startsWith('.')
+  })
 
   const paths = categories.flatMap((category) => {
-    const files = fs.readdirSync(path.join('articles', category))
+    const files = fs.readdirSync(path.join(articlesDir, category)).filter(filename => 
+      filename.endsWith('.md') && !filename.startsWith('.')
+    )
     return files.map((filename) => ({
       params: {
         category,
@@ -30,18 +39,32 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }) {
   const { category, slug } = params
-  const filePath = path.join('articles', category, `${slug}.md`)
+  const filePath = path.join(process.cwd(), 'articles', category, `${slug}.md`)
   const fileContent = fs.readFileSync(filePath, 'utf-8')
   const { content, data } = matter(fileContent)
 
-  const processed = await remark()
+  const processed = await unified()
+    .use(remarkParse)
     .use(remarkGfm)
-    .use(html)
+    .use(remarkRehype, { allowDangerousHtml: true })
+    .use(rehypeRaw)
+    .use(rehypeStringify)
     .process(content)
 
   let htmlContent = processed.toString()
 
+  // Base path for static assets
+  const basePath = '/help-center'
+  
   htmlContent = htmlContent
+    // Fix image paths to include basePath
+    .replace(/<img([^>]*?)src="(\/[^"]+)"([^>]*?)>/g, (match, before, src, after) => {
+      // Only prefix if it's a local path (starts with /) and doesn't already have basePath
+      if (src.startsWith('/') && !src.startsWith(basePath)) {
+        return `<img${before}src="${basePath}${src}"${after}>`
+      }
+      return match
+    })
     .replace(/<blockquote>\s*<p><strong>Tip:<\/strong>\s*(.*?)<\/p>\s*<\/blockquote>/gs, (_, text) => `<div class="tip-box">${text}</div>`)
     .replace(/<blockquote>\s*<p><strong>Note:<\/strong>\s*(.*?)<\/p>\s*<\/blockquote>/gs, (_, text) => `<div class="note-box">${text}</div>`)
     .replace(/<blockquote>\s*<p><strong>Warning:<\/strong>\s*(.*?)<\/p>\s*<\/blockquote>/gs, (_, text) => `<div class="warning-box">${text}</div>`)
@@ -79,6 +102,76 @@ export default function ArticlePage({ title, description, date, author, content,
         });
       });
     });
+
+    // Email template generator script
+    const generateEmailBtn = document.querySelector('.generate-email-btn[data-form-id="past-label"]');
+    if (generateEmailBtn) {
+      generateEmailBtn.addEventListener('click', () => {
+        const labelManagerName = document.getElementById('label-manager-name-past').value.trim();
+        const originalWriterName = document.getElementById('original-writer-name-past').value.trim();
+        const remixName = document.getElementById('remix-name-past').value.trim();
+        const yourName = document.getElementById('your-name-past').value.trim();
+        const originalWriterPercentage = document.getElementById('original-writer-percentage-past').value.trim();
+        const yourPercentage = document.getElementById('your-percentage-past').value.trim();
+
+        // Validate required fields
+        if (!labelManagerName || !originalWriterName || !remixName || !yourName || !originalWriterPercentage || !yourPercentage) {
+          alert('Please fill in all fields before generating the email template.');
+          return;
+        }
+
+        // Generate email template
+        const emailTemplate = `Hi ${labelManagerName} and ${originalWriterName}, I hope you're doing well!
+
+I wanted to reach out regarding ${remixName}. I'm currently signed as a writer with WAYU Publishing, who handle the administration of all my compositions, and I wanted to confirm how the composition (publishing) rights will be handled.
+
+Since the remix introduced new creative and compositional elements, I believe it's fair for it to be registered as a separate composition based on the following ownership percentages:
+
+${originalWriterName} (Original Artist): ${originalWriterPercentage}%
+
+${yourName} (Remixer): ${yourPercentage}%
+
+This doesn't affect ownership of the original composition or any master recording rights. It only applies to the publishing side of the remix itself.
+
+I've attached a short amendment to outline this. Please take a look, and if everything looks good, feel free to sign and return it at your convenience.
+
+Thank you, and please let me know if you have any questions!
+
+Best,
+
+${yourName}`;
+
+        // Display the generated email in a code block
+        const outputDiv = document.getElementById('email-output-past-label');
+        const wrapper = document.createElement('div');
+        wrapper.className = 'code-block-wrapper';
+        
+        const copyBtn = document.createElement('button');
+        copyBtn.className = 'copy-button';
+        copyBtn.textContent = 'Copy';
+        
+        const pre = document.createElement('pre');
+        const code = document.createElement('code');
+        code.textContent = emailTemplate;
+        pre.appendChild(code);
+        
+        wrapper.appendChild(copyBtn);
+        wrapper.appendChild(pre);
+        
+        outputDiv.innerHTML = '';
+        outputDiv.appendChild(wrapper);
+        outputDiv.style.display = 'block';
+
+        // Add copy functionality to the new copy button
+        copyBtn.addEventListener('click', () => {
+          const codeText = code.textContent;
+          navigator.clipboard.writeText(codeText).then(() => {
+            copyBtn.textContent = 'Copied!';
+            setTimeout(() => (copyBtn.textContent = 'Copy'), 1500);
+          });
+        });
+      });
+    }
   }, []);
 
   return (
@@ -96,7 +189,7 @@ export default function ArticlePage({ title, description, date, author, content,
           {description && <p className="description">{description}</p>}
 
           <div className="author-info">
-            <img src={`/images/authors/${author.toLowerCase().replace(/\s+/g, '-')}.jpg`} alt={author} />
+            <img src={`/help-center/images/authors/${author.toLowerCase().replace(/\s+/g, '-')}.jpg`} alt={author} />
             <div className="author-meta">
               <span className="author-name">{author}</span>
               <span className="date">Last Updated {new Date(date).toLocaleDateString('en-US', {
